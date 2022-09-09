@@ -1,0 +1,24 @@
+models:
+  my_app:
+    compress_with:
+      type: tgz
+    store_with:
+      type: oss
+      bucket: my_app
+      endpoint: oss-cn-shenzhen.aliyuncs.com
+      path: my_app
+      access_key_id: access_key_id
+      access_key_secret: access_key_secret
+      max_retries: 7
+    databases:
+      my_app:
+        database: database
+        type: mysql
+        host: host.docker.internal
+        port: 3306
+        username: root
+        password: 123456
+        additional_options: '--single-transaction --quick'
+    archive:
+      includes:
+        - /Users/weibocy/gobackup-docker
