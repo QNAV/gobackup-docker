@@ -5,7 +5,9 @@ models:
     store_with:
       type: oss
       bucket: my_app
-      endpoint: oss-cn-shenzhen.aliyuncs.com
+      # 建议走内网
+      endpoint: oss-cn-shenzhen-internal.aliyuncs.com
+      #endpoint: oss-cn-hangzhou-internal.aliyuncs.com
       path: my_app
       access_key_id: access_key_id
       access_key_secret: access_key_secret
@@ -18,7 +20,9 @@ models:
         port: 3306
         username: root
         password: 123456
-        additional_options: '--single-transaction --quick'
+        additional_options: '--column-statistics=0 --default-character-set=utf8mb4 --set-gtid-purged=off --single-transaction --quick'
     archive:
       includes:
         - /Users/weibocy/gobackup-docker
+      excludes:
+        - /Users/weibocy/gobackup-docker/os
