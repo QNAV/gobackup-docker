@@ -1,5 +1,10 @@
 FROM buildpack-deps:buster
 
+# timezone china
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo '$TZ' > /etc/timezone
+
 # pg14-apt
 RUN apt-get update;
 RUN apt-get install -y --no-install-recommends gnupg2 wget
